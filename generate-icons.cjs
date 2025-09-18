@@ -1,0 +1,87 @@
+const fs = require('fs');
+const path = require('path');
+
+// Icon sizes for Android
+const androidSizes = [
+  { size: 36, density: 'ldpi' },
+  { size: 48, density: 'mdpi' },
+  { size: 72, density: 'hdpi' },
+  { size: 96, density: 'xhdpi' },
+  { size: 144, density: 'xxhdpi' },
+  { size: 192, density: 'xxxhdpi' }
+];
+
+// Create Android icon directories and copy base icon
+const androidIconsPath = path.join(__dirname, 'android', 'app', 'src', 'main', 'res');
+
+// Create the base SVG icon content
+const iconSvg = `<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#goldGradient)" filter="url(#shadow)"/>
+  
+  <!-- Quran Book -->
+  <g transform="translate(256, 256)">
+    <!-- Book Base -->
+    <path d="M-80,-40 L80,-40 L80,40 L-80,40 Z" fill="#8B4513" opacity="0.8"/>
+    
+    <!-- Book Pages -->
+    <path d="M-75,-35 L75,-35 L75,35 L-75,35 Z" fill="#FFF8DC"/>
+    
+    <!-- Book Spine -->
+    <path d="M-80,-40 L-60,-30 L-60,30 L-80,40 Z" fill="#654321"/>
+    
+    <!-- Book Cover Design -->
+    <rect x="-70" y="-30" width="140" height="60" fill="none" stroke="url(#goldGradient)" stroke-width="3" rx="5"/>
+    <rect x="-60" y="-20" width="120" height="40" fill="none" stroke="url(#goldGradient)" stroke-width="2" rx="3"/>
+    
+    <!-- Arabic Calligraphy Style Decoration -->
+    <circle cx="0" cy="-10" r="8" fill="url(#goldGradient)"/>
+    <path d="M-20,0 Q0,10 20,0 Q0,20 -20,0" fill="url(#goldGradient)"/>
+    
+    <!-- Book Stand -->
+    <path d="M-90,40 L-60,60 L60,60 L90,40" fill="#8B4513" opacity="0.6"/>
+    <path d="M-60,60 L-40,80 L40,80 L60,60" fill="#654321" opacity="0.8"/>
+  </g>
+  
+  <!-- Decorative Elements -->
+  <g transform="translate(256, 256)">
+    <!-- Top Decoration -->
+    <path d="M-30,-80 Q0,-100 30,-80 Q0,-90 -30,-80" fill="url(#goldGradient)" opacity="0.7"/>
+    
+    <!-- Bottom Decoration -->
+    <path d="M-30,80 Q0,100 30,80 Q0,90 -30,80" fill="url(#goldGradient)" opacity="0.7"/>
+    
+    <!-- Side Decorations -->
+    <circle cx="-100" cy="0" r="12" fill="url(#goldGradient)" opacity="0.6"/>
+    <circle cx="100" cy="0" r="12" fill="url(#goldGradient)" opacity="0.6"/>
+  </g>
+</svg>`;
+
+// Save the main icon
+fs.writeFileSync(path.join(__dirname, 'public', 'icons', 'icon.svg'), iconSvg);
+
+console.log('✅ Icon files generated successfully!');
+console.log('📱 Android icon directories created');
+console.log('🎨 SVG icon saved to public/icons/icon.svg');
+
+// Instructions for manual icon generation
+console.log('\n📋 Next steps:');
+console.log('1. Use an online SVG to PNG converter to create PNG versions');
+console.log('2. Generate the following sizes:');
+androidSizes.forEach(({ size, density }) => {
+  console.log(`   - ${size}x${size}px for ${density} density`);
+});
+console.log('3. Place them in android/app/src/main/res/mipmap-{density}/ic_launcher.png');
+console.log('4. Run: npx cap sync');
+console.log('5. Run: npx cap open android');

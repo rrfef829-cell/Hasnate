@@ -6,6 +6,8 @@ import { surahList } from '../data/quranMeta';
 import { getSurah } from '../data/quran';
 import { getTafsir } from '../data/tafsir';
 import TajweedLegendModal from '../components/quran/TajweedLegendModal';
+import QuranAudioPlayer from '../components/quran/QuranAudioPlayer';
+import { getSurahData } from '../services/quranApi';
 
 const QuranPage: React.FC = () => {
   const [selectedSurahInfo, setSelectedSurahInfo] = useState<SurahInfo | null>(null);
@@ -166,6 +168,14 @@ const QuranPage: React.FC = () => {
                     </div>
                 </label>
               </div>
+            </div>
+            
+            {/* Audio Player */}
+            <div className="p-4 border-b dark:border-gray-700">
+              <QuranAudioPlayer 
+                surahNumber={selectedSurahInfo.number}
+                surahName={selectedSurahInfo.name}
+              />
             </div>
             <div className="p-4 sm:p-8 overflow-y-auto flex-1 leading-loose text-right">
               {selectedSurahInfo.number !== 1 && selectedSurahInfo.number !== 9 && (

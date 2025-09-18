@@ -1,0 +1,79 @@
+{
+  "name": "حسناتي - التطبيق الإسلامي الشامل",
+  "short_name": "حسناتي",
+  "description": "تطبيق إسلامي شامل يحتوي على القرآن الكريم والأحاديث النبوية وقصص الأنبياء",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f766e",
+  "theme_color": "#0f766e",
+  "orientation": "portrait",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "lifestyle", "books"],
+  "screenshots": [
+    {
+      "src": "/screenshots/home.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "القرآن الكريم",
+      "short_name": "القرآن",
+      "description": "استمع واقرأ القرآن الكريم",
+      "url": "/quran",
+      "icons": [
+        {
+          "src": "/icons/quran-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "الأحاديث النبوية",
+      "short_name": "الأحاديث",
+      "description": "تصفح مكتبة الأحاديث النبوية",
+      "url": "/hadith",
+      "icons": [
+        {
+          "src": "/icons/hadith-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "قصص الأنبياء",
+      "short_name": "الأنبياء",
+      "description": "تعلم من قصص الأنبياء والرسل",
+      "url": "/prophets",
+      "icons": [
+        {
+          "src": "/icons/prophets-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

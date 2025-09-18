@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSettings } from '../hooks/useSettings';
 import { useDownloads } from '../hooks/useDownloads';
+import ThemeToggle from '../components/ui/ThemeToggle';
 
 const SettingsPage: React.FC = () => {
     const { settings, updateSettings } = useSettings();
@@ -50,19 +51,7 @@ const SettingsPage: React.FC = () => {
             </div>
 
             {/* Theme Settings */}
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h3 className="text-2xl font-bold text-teal-700 dark:text-teal-300 mb-4">المظهر</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    {themes.map(theme => (
-                        <button key={theme.id} onClick={() => handleThemeChange(theme.id as any)}
-                            className={`p-4 rounded-lg border-2 transition-all flex flex-col items-center justify-center gap-2
-                            ${settings.theme === theme.id ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/40' : 'border-gray-200 dark:border-gray-700 hover:border-teal-400 dark:hover:border-teal-600'}`}>
-                            <i className={`ph-fill ph-${theme.icon} text-3xl ${settings.theme === theme.id ? 'text-teal-600 dark:text-teal-400' : 'text-gray-500'}`}></i>
-                            <span className="font-semibold text-gray-800 dark:text-gray-200">{theme.name}</span>
-                        </button>
-                    ))}
-                </div>
-            </div>
+            <ThemeToggle />
 
             {/* Prayer Times Settings */}
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
